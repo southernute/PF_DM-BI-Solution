@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>PF_DM_Database</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{761342d7-4481-41aa-918b-79065c6acd23}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>PF_DM_Database</RootNamespace>
+    <AssemblyName>PF_DM_Database</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dm\" />
+    <Folder Include="dm\Tables\" />
+    <Folder Include="TAB\" />
+    <Folder Include="TAB\Views\" />
+    <Folder Include="scd\" />
+    <Folder Include="scd\Stored Procedures\" />
+    <Folder Include="MDS\" />
+    <Folder Include="MDS\Stored Procedures\" />
+    <Folder Include="Security\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dm\Tables\MDSUserDepartmentUnit.sql" />
+    <Build Include="TAB\Views\vw_FACTLedger.sql" />
+    <Build Include="TAB\Views\vw_FACTJournal.sql" />
+    <Build Include="TAB\Views\vw_DimSource.sql" />
+    <Build Include="TAB\Views\vw_DIMProject.sql" />
+    <Build Include="TAB\Views\vw_DIMLedger.sql" />
+    <Build Include="TAB\Views\vw_DIMFund.sql" />
+    <Build Include="TAB\Views\vw_DimDepartmentLeaf.sql" />
+    <Build Include="TAB\Views\vw_DIMDate.sql" />
+    <Build Include="TAB\Views\vw_DIMBusinessUnit.sql" />
+    <Build Include="TAB\Views\vw_DimAccountLeaf.sql" />
+    <Build Include="TAB\Views\vw_DIMAccount.sql" />
+    <Build Include="TAB\Views\vw_FactDepartmentDepartmentTree.sql" />
+    <Build Include="TAB\Views\vw_DimDepartmentDivision.sql" />
+    <Build Include="scd\Stored Procedures\DimDivision.sql" />
+    <Build Include="scd\Stored Procedures\DimDepartment.sql" />
+    <Build Include="scd\Stored Procedures\DimADUser.sql" />
+    <Build Include="MDS\Stored Procedures\RebuildMDSTable.sql" />
+    <Build Include="Security\TAB.sql" />
+    <Build Include="Security\scd.sql" />
+    <Build Include="Security\MDS.sql" />
+    <Build Include="Security\dm.sql" />
+    <Build Include="SSISDB Post-environment settings.sql" />
+    <Build Include="SSISDB PRE-environment settings.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SqlSchemaCompare.scmp" />
+  </ItemGroup>
+</Project>
